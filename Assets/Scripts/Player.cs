@@ -3,46 +3,61 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 
 public class Player : MonoBehaviour
 {
     public float moveSpeed;
     public float normalmoveSpeed;
     public float sprintSpeed;
-    public float maxmoveSpeed;
-    [SerializeField] private bool canSprint;
+    //[SerializeField] private bool canSprint;
 
     private Rigidbody2D rb;
+    private bool sprinting;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        //movement mechanics
-        float movementInput = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-        float movementInput2 = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        transform.position += new Vector3(0, 0, movementInput);
-        transform.position += new Vector3(movementInput2, 0, 0);
+        //Movement Mechanics
+        float horizontalAxis = Input.GetAxis("Horizontal");
+        float verticalAxis = Input.GetAxis("Vertical");
 
-        //Sprint Code that doesn't work yet
-        if (Input.GetKeyDown(KeyCode.LeftShift) && CheckIfSprint() && canSprint)
-        {
-            moveSpeed += sprintSpeed;
-        }
-        else
-        {
-            moveSpeed = normalmoveSpeed;
-        }
+        var camera = Camera.main;
+        var forward = camera.transform.forward;
+        var right = camera.transform.right;
 
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+        var moveDirection = forward * verticalAxis + right * horizontalAxis;
+
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
 
-    private bool CheckIfSprint()
+    void Update()
     {
-        
-        return canSprint;
+
+        // Sprint Mechanics
+        if (Input.GetKey(KeyCode.LeftShift)) 
+        {
+            if (!sprinting) 
+            {
+                moveSpeed += sprintSpeed;
+                sprinting = true; 
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift)) 
+        {
+            moveSpeed = normalmoveSpeed;
+            sprinting = false;
+        }
+
     }
 
 }
