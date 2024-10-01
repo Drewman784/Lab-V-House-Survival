@@ -59,7 +59,7 @@ public class DefenseBase : MonoBehaviour
                 visualElement.GetComponent<MeshRenderer>().material = repairedMat;
                 Debug.Log("repaired!");
                 functioning = true;
-                visualElement.GetComponent<MeshCollider>().enabled = true;
+                visualElement.GetComponent<BoxCollider>().enabled = true;
             }
         }
     }
@@ -76,7 +76,7 @@ public class DefenseBase : MonoBehaviour
             currentHealth = 0;
             functioning = false;
             //maybe switch to third material -> broken?
-            visualElement.GetComponent<MeshCollider>().enabled = false; //<- disables the collider when health is zero
+            visualElement.GetComponent<BoxCollider>().enabled = false; //<- disables the collider when health is zero
         }
 
         

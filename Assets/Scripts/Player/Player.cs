@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprinting = false;
 
         //REPAIR VARS
         defenseInteractable = false;
@@ -74,7 +75,7 @@ public class Player : MonoBehaviour
         if(defenseInteractable){
             if(Input.GetKeyDown(KeyCode.F)){
                 defenseInteractableObject.TryToRepair(GetComponent<PlayerInventory>());
-            } else if(Input.GetKeyDown(KeyCode.E)){
+            } /**else if(Input.GetKeyDown(KeyCode.E)){
                 if(GetComponent<PlayerInventory>().IsHolding()){
                     PlaceObject();
                 }
@@ -84,9 +85,9 @@ public class Player : MonoBehaviour
                 defenseInteractableObject.gameObject.GetComponent<BoxCollider>().isTrigger = false;
                 defenseInteractable = false;
                 defenseInteractableObject = null;
-            } 
+            } */
         }else if(Input.GetKeyDown(KeyCode.E)){
-            PlaceObject();
+           /* PlaceObject();*/
         }
 
     }
