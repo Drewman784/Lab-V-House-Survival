@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -89,8 +90,15 @@ public class Player : MonoBehaviour
         }else if(Input.GetKeyDown(KeyCode.E)){
            /* PlaceObject();*/
         }
-
     }
+
+    //private void OnCollision(Collision Collision)
+    //{
+    //    if (Collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        
+    //    }
+    //}
 
     //REPAIR CODE
     public void EnterDefenseRange(DefenseBase defObj){
