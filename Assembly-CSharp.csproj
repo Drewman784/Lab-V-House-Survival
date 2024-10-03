@@ -60,6 +60,7 @@
     <Analyzer Include="C:\Users\Andrew\Desktop\Unity\The Unity Project Folder\Unity Project3\Test 01 Project\2022.3.39f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Weapons\Pistol.cs" />
     <Compile Include="Assets\Scripts\Old\Enemy.cs" />
@@ -72,6 +73,19 @@
     <Compile Include="Assets\Scripts\Defenses\ScriptableObject Bases\DefenseScriptableBase.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInventory.cs" />
+=======
+    <Compile Include="Assets\Enemy.cs" />
+    <Compile Include="Assets\WeaponSwitching.cs" />
+    <Compile Include="Assets\GunSystem.cs" />
+    <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\Defenses\ScriptableObject Bases\BlockadeScriptableObject.cs" />
+    <Compile Include="Assets\Scripts\Camera.cs" />
+    <Compile Include="Assets\Scripts\Defenses\ScriptableObject Bases\DefenseScriptableBase.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInventory.cs" />
+    <Compile Include="Assets\Gun1911.cs" />
+    <Compile Include="Assets\Pistol.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Assets\Scripts\Defenses\DefenseBase.cs" />
   </ItemGroup>
   <ItemGroup>
