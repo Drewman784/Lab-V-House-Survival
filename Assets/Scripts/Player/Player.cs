@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -102,6 +103,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
         else if(Input.GetKey(KeyCode.C)){ //place defense
         if(!GetComponent<PlayerInventory>().InventoryIsEmpty()){
             Debug.Log("placing now");
@@ -109,56 +111,5 @@ public class Player : MonoBehaviour
         }
 
         } 
-
-    }
-
-    //REPAIR CODE
-    public void EnterDefenseRange(DefenseBase defObj){
-        defenseInteractableObject = defObj;
-        defenseInteractable = true;
-        Debug.Log("entered range");
-    }
-
-    public void ExitDefenseRange(DefenseBase defObj){
-        if(defObj == defenseInteractableObject){
-            defenseInteractableObject = null;
-            defenseInteractable = false;
-        }
-    }
-
-    //INVENTORY CODE
-    //this method references: https://discussions.unity.com/t/displaying-the-ray-line/406529/8
-    //this method also references: https://gamedevbeginner.com/raycasts-in-unity-made-easy/
-        private bool PlaceObject(){
-        if(!GetComponent<PlayerInventory>().InventoryIsEmpty()){
-
-            GameObject toPlace = GetComponent<PlayerInventory>().SelectFromInventory();
-            
-             Ray ray = new Ray(Camera.main.transform.position+new Vector3(0,.5f,0), Camera.main.transform.forward*20);
-             RaycastHit hitData;
-             //Physics.Raycast(ray, out hitData);
-             Debug.DrawRay(Camera.main.transform.position+new Vector3(0,.5f,0), Camera.main.transform.forward*20, Color.green);
-
-
-            if (Physics.Raycast(ray, out hitData) /**&& hitData.distance<=15*/) {
-                Debug.Log("YEAH");
-                //LineRenderer line = new LineRenderer();
-                //line.SetPosition(0, ray.origin);
-                //line.SetPosition(1, hitData.point);
-                if(hitData.collider.gameObject!=toPlace){
-
-                toPlace.SetActive(true);
-                toPlace.transform.position = hitData.point+new Vector3(0,toPlace.GetComponent<BoxCollider>().bounds.size.y/2,0);
-                }
-                return true;
-            } else{
-                return false;
-            }
-
-        } else{
-            return false;
-        }
-        
-    }
-
+	}
 }
